@@ -71,3 +71,19 @@ const NOTES = [
         flat: 'ab'
     },
 ];
+
+function getNoteIndex(note, accidental) {
+    for (let i = 0; i < 12; i++) {
+        if (NOTES[i][accidental] == note) {
+            return i;
+        }
+    }
+    return -1; // Fehler
+}
+
+function intervalToRelNote(start, interval) {
+    while(start + interval < 0) {
+        interval += 12;
+    }
+    return (start + interval) % 12; 
+}
