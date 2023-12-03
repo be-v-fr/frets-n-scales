@@ -96,7 +96,7 @@ function getAbsoluteNotes(intervals, root) {
         const interval = intervals[i];
         const relNote = intervalToRelNote(relRoot, interval);
         const absNote = NOTES[relNote]['default'];
-        absolute.push(absNote.toUpperCase());
+        absolute.push(capitalizeFirstLetter(absNote));
     }
     return absolute;
 }

@@ -12,13 +12,20 @@ function init() {
     renderScale();
 }
 
+function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
 function renderNav() {
     const tuning = document.getElementById('navTuning');
     const scale = document.getElementById('navScale');
     tuning.innerHTML = '';
-    tuning.innerHTML = `${DEF_TUNING[0]}: ${DEF_TUNING[1]} ${DEF_TUNING[2]}`;
+    tuning.innerHTML += `${capitalizeFirstLetter(DEF_TUNING[0])}: `;
+    tuning.innerHTML += `${capitalizeFirstLetter(DEF_TUNING[1])} `;
+    tuning.innerHTML += `${capitalizeFirstLetter(DEF_TUNING[2])}`;
     scale.innerHTML = '';
-    scale.innerHTML = `${DEF_SCALE[2]} ${DEF_SCALE[1]} (${DEF_SCALE[0]})`;
+    scale.innerHTML = `${capitalizeFirstLetter(DEF_SCALE[2])} `;
+    scale.innerHTML += `${DEF_SCALE[1]} (${DEF_SCALE[0]})`;
 }
 
 function updateTuning(relTuning, root) {
@@ -57,13 +64,13 @@ function renderScale() {
     for (let i = 0; i < numberOfStrings; i++) { // Index für Zeile bzw. Saite
         const row = numberOfStrings - 1 - i;
         const absFret0 = currentTuning[i];
-        for (let j = 0; j < 12; j++) {
+        for (let j = 0; j < 12; j++) { // Index für Bund
             const absNote = getAbsoluteNotes([j], absFret0);
             const column = j + 1;
             const fretJ = document.getElementById(`row${row}column${column}`);
             fretJ.innerHTML = '';
-            if(currentScale.includes(absNote[0])) {
-                fretJ.innerHTML = noteHtml(absNote);
+            if (currentScale.includes(absNote[0])) {
+                fretJ.innerHTML = noteHtml(absNote, j);
             }
         }
         const container = document.getElementById(`row${row}column0`);
@@ -80,10 +87,14 @@ function fretboardRowHtml(index) {
     return html;
 }
 
-function noteHtml(absNote) {
+function noteHtml(absNote, fret) {
     let html = `<p class="note`;
-    if(absNote == currentScale[0]) {
-        html += ` rootNote`
+    if (fret == 0) {
+        html += ` fret0Note`;
+    } else {
+        if (absNote == currentScale[0]) {
+            html += ` rootNote`;
+        }
     }
     html += `">${absNote}</p>`;
     return html;
