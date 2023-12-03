@@ -43,7 +43,6 @@ function renderScale() {
     for (let i = 0; i < numberOfStrings; i++) { // Index für Zeile bzw. Saite
         const row = numberOfStrings - 1 - i;
         const absFret0 = currentTuning[i];
-        // const relFret0 = getNoteIndex(absFret0, 'default'); 
         for (let j = 0; j < 12; j++) {
             const absNote = getAbsoluteNotes([j], absFret0);
             const column = j + 1;
@@ -61,7 +60,7 @@ function renderScale() {
 function fretboardRowHtml(index) {
     let html = `<tr id="row${index}">`;
     for (let j = 0; j < 13; j++) { // Index für Spalte bzw. Bund
-        html += `<td id="row${index}column${j}"></td>`;
+        html += `<td id="row${index}column${j}" class="column${j}"></td>`;
     }
     html += `</tr>`;
     return html;
