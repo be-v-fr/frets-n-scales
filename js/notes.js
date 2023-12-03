@@ -73,6 +73,7 @@ const NOTES = [
 ];
 
 function getNoteIndex(note, accidental) {
+    note = note.toLowerCase();
     for (let i = 0; i < 12; i++) {
         if (NOTES[i][accidental] == note) {
             return i;
@@ -86,4 +87,16 @@ function intervalToRelNote(start, interval) {
         interval += 12;
     }
     return (start + interval) % 12; 
+}
+
+function getAbsoluteNotes(intervals, root) {
+    let absolute = [];
+    const relRoot = getNoteIndex(root, 'default');
+    for (let i = 0; i < intervals.length; i++) {
+        const interval = intervals[i];
+        const relNote = intervalToRelNote(relRoot, interval);
+        const absNote = NOTES[relNote]['default'];
+        absolute.push(absNote.toUpperCase());
+    }
+    return absolute;
 }
