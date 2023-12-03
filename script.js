@@ -1,10 +1,24 @@
-// Default-Werte
-let currentTuning = getAbsoluteNotes(REL_TUNINGS['guitar']['standard'], 'e');
-let currentScale = getAbsoluteNotes(REL_SCALES['diatonic']['major'], 'c');
+// Default-Parameter
+const DEF_TUNING = ['guitar', 'standard', 'e'];
+const DEF_SCALE = ['diatonic', 'major', 'c'];
+
+// globale Variablen
+let currentTuning = getAbsoluteNotes(REL_TUNINGS[DEF_TUNING[0]][DEF_TUNING[1]], DEF_TUNING[2]);
+let currentScale = getAbsoluteNotes(REL_SCALES[DEF_SCALE[0]][DEF_SCALE[1]], DEF_SCALE[2]);
 
 function init() {
+    renderNav();
     renderFretboard();
     renderScale();
+}
+
+function renderNav() {
+    const tuning = document.getElementById('navTuning');
+    const scale = document.getElementById('navScale');
+    tuning.innerHTML = '';
+    tuning.innerHTML = `${DEF_TUNING[0]}: ${DEF_TUNING[1]} ${DEF_TUNING[2]}`;
+    scale.innerHTML = '';
+    scale.innerHTML = `${DEF_SCALE[2]} ${DEF_SCALE[1]} (${DEF_SCALE[0]})`;
 }
 
 function updateTuning(relTuning, root) {
