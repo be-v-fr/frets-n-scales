@@ -1,35 +1,35 @@
 let instruments = {
-    id: 'instrument',
+    id: 'instruments',
     data: [],
     focus: 0
 };
 
 let relTunings = {
-    id: 'relTuning',
+    id: 'relTunings',
     data: [],
     focus: 0
 };
 
 let tuningRoots = {
-    id: 'tuningRoot',
+    id: 'tuningRoots',
     data: [],
     focus: 0
 };
 
 let scaleCategories = {
-    id: 'scaleCategory',
+    id: 'scaleCategories',
     data: [],
     focus: 0
 };
 
 let scaleRoots = {
-    id: 'scaleRoot',
+    id: 'scaleRoots',
     data: [],
     focus: 0
 };
 
 let relScales = {
-    id: 'relScale',
+    id: 'relScales',
     data: [],
     focus: 0
 };
@@ -113,7 +113,9 @@ function liHtml(list, listIndex, dataIndex) {
     let html = `<li id="${itemId}" class="listItem${listIndex} preventSelect">`;
     if (dataIndex >= 0) { // für leere Felder wurde dataIndex = -1 übergeben
         const listItem = list['data'][dataIndex];
-        html += `<button onclick="handleListClick(${list['id']}, ${dataIndex})">${listItem}</button>`;
+        html += `<button onclick="handleListClick(${list['id']}, ${dataIndex})">
+            ${listItem}
+            </button>`;
     }
     html += `</li>`;
     return html;

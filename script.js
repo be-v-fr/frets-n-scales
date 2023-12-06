@@ -33,14 +33,14 @@ function renderNav() {
 //     scale.innerHTML += `${DEF_SCALE[1]} (${DEF_SCALE[0]})`;
 // }
 
-function toggleNav() {
+function showNav() {
     const nav = document.getElementById('nav');
-    nav.classList.toggle('showNav');
+    nav.style.top = '0';
 }
 
 function hideNav() {
     const nav = document.getElementById('nav');
-    nav.classList.remove('showNav');
+    nav.style.top = 'calc(var(--navHeightHidden) - var(--navHeightTotal))';
 }
 
 function updateTuning(relTuning, root) {

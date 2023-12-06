@@ -1,7 +1,7 @@
 let startY = null;
 
 function scrollListMouse(event) {
-    let list = eval(this.id); // erhalte JSON-Array aus ID
+    let list = eval(this.id);
     if (checkMouseScrollDirectionIsUp(event)) {
         scrollListUp(list, 1);
     } else {
@@ -58,7 +58,7 @@ function scrollListUp(list, steps) { // PARAMETER BEARBEITEN
     }
 }
 
-function checkScrollingAllowed(list) {
+function checkScrollingAllowed(list, steps) {
     const length = list['data'].length;
     if (length < 5) { // unvollständige Liste
         if (
