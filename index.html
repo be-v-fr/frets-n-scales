@@ -7,18 +7,29 @@
     <title>Frets 'n' Scales</title>
 
     <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./nav.css">
 
     <script src="./js/notes.js"></script>
     <script src="./js/scales.js"></script>
     <script src="./js/tunings.js"></script>
+    <script src="./js/lists.js"></script>
+    <script src="./js/handleScroll.js"></script>
     <script src="./script.js"></script>
 </head>
 
 <body onload="init()">
     <div id="content">
-        <nav id="navBar" onclick="toggleNav()">
-            <div id="navTuning"></div>
-            <div id="navScale"></div>
+        <nav id="nav" onclick="toggleNav()">
+            <div id="tuning">
+                <ul id="instrument"></ul>
+                <ul id="relTuning"></ul>
+                <ul id="tuningRoot"></ul>
+            </div>
+            <div id="scale">
+                <ul id="scaleCategory"></ul>
+                <ul id="scaleRoot"></ul>
+                <ul id="relScale"></ul>
+            </div>
         </nav>
         <table id="fretboard" onclick="hideNav()"></table>
     </div>

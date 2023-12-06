@@ -7,6 +7,7 @@ let currentTuning = getAbsoluteNotes(REL_TUNINGS[DEF_TUNING[0]][DEF_TUNING[1]], 
 let currentScale = getAbsoluteNotes(REL_SCALES[DEF_SCALE[0]][DEF_SCALE[1]], DEF_SCALE[2]);
 
 function init() {
+    initNavTuning();
     renderNav();
     renderFretboard();
     renderScale();
@@ -17,24 +18,28 @@ function capitalizeFirstLetter(string) {
 }
 
 function renderNav() {
-    const tuning = document.getElementById('navTuning');
-    const scale = document.getElementById('navScale');
-    tuning.innerHTML = '';
-    tuning.innerHTML += `${capitalizeFirstLetter(DEF_TUNING[0])}: `;
-    tuning.innerHTML += `${capitalizeFirstLetter(DEF_TUNING[1])} `;
-    tuning.innerHTML += `${capitalizeFirstLetter(DEF_TUNING[2])}`;
-    scale.innerHTML = '';
-    scale.innerHTML = `${capitalizeFirstLetter(DEF_SCALE[2])} `;
-    scale.innerHTML += `${DEF_SCALE[1]} (${DEF_SCALE[0]})`;
+    renderNavTuning();
 }
 
+// function renderNav() {
+//     const tuning = document.getElementById('tuning');
+//     const scale = document.getElementById('scale');
+//     tuning.innerHTML = '';
+//     tuning.innerHTML += `${capitalizeFirstLetter(DEF_TUNING[0])}: `;
+//     tuning.innerHTML += `${capitalizeFirstLetter(DEF_TUNING[1])} `;
+//     tuning.innerHTML += `${capitalizeFirstLetter(DEF_TUNING[2])}`;
+//     scale.innerHTML = '';
+//     scale.innerHTML = `${capitalizeFirstLetter(DEF_SCALE[2])} `;
+//     scale.innerHTML += `${DEF_SCALE[1]} (${DEF_SCALE[0]})`;
+// }
+
 function toggleNav() {
-    const nav = document.getElementById('navBar');
+    const nav = document.getElementById('nav');
     nav.classList.toggle('showNav');
 }
 
 function hideNav() {
-    const nav = document.getElementById('navBar');
+    const nav = document.getElementById('nav');
     nav.classList.remove('showNav');
 }
 
