@@ -16,11 +16,11 @@
 
 <body onload="init()">
     <div id="content">
-        <nav id="navBar">
-            <button id="navTuning" onclick=""></button>
-            <button id="navScale" onclick=""></button>
+        <nav id="navBar" onclick="toggleNav()">
+            <div id="navTuning"></div>
+            <div id="navScale"></div>
         </nav>
-        <table id="fretboard"></table>
+        <table id="fretboard" onclick="hideNav()"></table>
     </div>
 </body>
 

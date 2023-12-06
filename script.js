@@ -28,6 +28,16 @@ function renderNav() {
     scale.innerHTML += `${DEF_SCALE[1]} (${DEF_SCALE[0]})`;
 }
 
+function toggleNav() {
+    const nav = document.getElementById('navBar');
+    nav.classList.toggle('showNav');
+}
+
+function hideNav() {
+    const nav = document.getElementById('navBar');
+    nav.classList.remove('showNav');
+}
+
 function updateTuning(relTuning, root) {
     currentTuning = getAbsoluteNotes(relTuning, root);
 }
